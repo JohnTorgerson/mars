@@ -59,6 +59,22 @@
       </div>
     </div>
 
+
+<!-- Rendered Card Sample -->
+          {% for movie in list %}
+
+          <div class="col-lg-4">
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                  <h4 class="card-title">{{ movie }}</h4>
+                  <h6 class="card-subtitle mb-2 text-muted">Is a top five favorite movie</h6>
+                  <p class="card-text">Search <a href="https://www.imdb.com/">IMDB</a> for more info!</p>
+                </div>
+              </div>
+          </div>
+
+          {% endfor %}
+
     <!--Bootstrap Rows indicate the start of a new horizontal 12 span grid-->
     <div class="row">
       <div class="col sm-6 col-md-12"> <!--Selects the element's interactivity model from Bootsrap--> 
