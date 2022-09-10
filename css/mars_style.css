@@ -2,7 +2,7 @@
   height: 400px;
   color: #2a2a2a;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: lightgray;
+  background: gray;
 }
 
 /* Table Style */
@@ -19,11 +19,11 @@ background-color: whitesmoke;
  /* h1 heading tag */
  h1 {
   /* Put a 10-pixel margin at the bottom of the heading. */
-  margin-top:10px;
+  margin-top:15px;
   /* Put a 50-pixel margin to the left */
   margin-left: 50px;
   /* Change the size of your font to 60 pixels high. */
-  font-size: 60px;
+  font-size: 80px;
   /* This will color the heading font plains lt green. */
   color: #2a2a2a;
   /* Align the text to the center of its enclosing element (e.g. div). */
@@ -31,15 +31,15 @@ background-color: whitesmoke;
   /* Underline the text. */
   /* text-decoration: underline; ((Or not)) brackets */
   /* The background of the heading Dk Grey. */
-  background-color: whitesmoke;
+  background-color: gray;
 }
 
 h3 {
   margin-top: 15px;
-  font-size: 20px;
+  font-size: 40px;
   color: #2a2a2a;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
+  text-align: left;
 }
 
 /* All img tags */
