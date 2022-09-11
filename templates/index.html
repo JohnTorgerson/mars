@@ -31,22 +31,6 @@
     </div>
     <hr>
 
-
-<!-- Rendered FOR LOOP Sample -->
-          <!-- {% for movie in list %}
-
-          <div class="col-lg-4">
-            <div class="card" style="width: 20rem;">
-                <div class="card-body">
-                  <h4 class="card-title">{{ movie }}</h4>
-                  <h6 class="card-subtitle mb-2 text-muted">Is a top five favorite movie</h6>
-                  <p class="card-text">Search <a href="https://www.imdb.com/">IMDB</a> for more info!</p>
-                 </div>
-              </div>
-          </div>
-
-          {% endfor %} -->
-
     <!--Bootstrap Rows indicate the start of a new horizontal 12 span grid-->
     <div class="row">
       <div class="col-md-12"> <!--Selects the element's interactivity model from Bootsrap--> 
@@ -71,11 +55,10 @@
       <!-- This indent layer starts a new Bootsrap component. -->
       <div class="col-md-8"> 
         <h2>
-          Mars Picture Here
+          Featured Mars Image
         </h2>
         <div style="align: left; text-align:center;">
-          <img src="https://picsum.photos/" width="600" alt="Featured Mars Image">
-          <div class="caption">Sweet Caption Here</div>
+          {{ listings.feature }}
         </div>
       </div>
 
@@ -83,22 +66,11 @@
       <div class="col-md-4"> 
         <!-- Create Custom Table Class -->
         <h2>
-          Mars Stats here
+          Mars Facts
         </h2>
         
         <table class="table table-striped table-hover">
-          <thead>
-            <tr style="text-align: right; height: 80px">
-              <th>Mars</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Sweet</th>
-              <td>Stats</td>
-            </tr>
-          </tbody>
+          {{ listings.table }}
         </table>
       </div>
     </div>
@@ -109,17 +81,44 @@
       <!-- This indent layer starts a new Bootsrap component. -->
       <div class="col-md-12">
         <h2 style="text-align: center">
-          Mars Hemisphere Pictures Here
+          Mars Hemispheres
         </h2>
         <hr>
-
       </div>
+
       <!-- To be replaced by Hemisphire dictionary -->
-      <div class="col-md-12" style="img-align=center">
-        <img src="https://picsum.photos/" width="200" alt="Mars 1 Hemisphere">
-        <img src="https://picsum.photos/" width="200" alt="Mars 2 Hemisphere">
-        <img src="https://picsum.photos/" width="200" alt="Mars 3 Hemisphere">
-        <img src="https://picsum.photos/" width="200" alt="Mars 4 Hemisphere">
+      <div class="col-md-3" style="img-align=center">
+        <div style="align:center; text-align:center;">
+          {{ listings.cerb_tif }}
+        </div>
+        <h3>
+          {{ listings.cerb_title }}
+        </h3>
+      </div>
+      <!-- -------------------------------------- -->
+      <div class="col-md-3" style="img-align=center">
+        <div style="align:center; text-align:center;">
+          {{ listings.schi_tif }}
+        </div>
+        <h3>
+          {{ listings.schi_title }}
+        </h3>
+      </div>
+      <!-- -------------------------------------- --><div class="col-md-3" style="img-align=center">
+        <div style="align:center; text-align:center;">
+          {{ listings.syrt_tif }}
+        </div>
+        <h3>
+          {{ listings.syrt_title }}
+        </h3>
+      </div>
+      <!-- -------------------------------------- --><div class="col-md-3" style="img-align=center">
+        <div style="align:center; text-align:center;">
+          {{ listings.vall_tif }}
+        </div>
+        <h3>
+          {{ listings.vall_title }}
+        </h3>
       </div>
       
     </div>
