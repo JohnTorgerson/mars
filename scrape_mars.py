@@ -14,8 +14,11 @@ import time
 def scrape():
     # Create an empty dict for listings that we can save to Mongo
     listings = {}
+    #----Below this Repeat remote chrome driver as needed----##
+    #---------------to scrape each updated page--------------##
 
-    ##  Scrape 1st Webpage ##
+
+    ##  Scrape 1st Webpage JPL MARS Planet Science News##
     # Setup splinter
     executable_path = {'executable_path': cdm().install()}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -35,21 +38,21 @@ def scrape():
     # Create a Beautiful Soup object, pass in our HTML, and use the html parser
     soup = bs(html, "html.parser")
 
-    # Populate the dictionary with key-value pairs for the headline, price, and reviews
+    # Populate the dictionary with key-value pairs for title and teaser paragraph
     listings["news_title"] = soup.find(class_="content_title").get_text()
     listings["news_teaser"] = soup.find(class_="article_teaser_body").get_text()
 
     # Quit the browser
     browser.quit()
-    #-------------------------#
+    #------------------------Continue------------------------##
 
-     ##  Scrape 2nd Webpage ##
+     ##  Scrape 2nd Webpage JPL Lab Space Image##
     # # Setup splinter
     # executable_path = {'executable_path': cdm().install()}
     # browser = Browser('chrome', **executable_path, headless=False)
 
     # # The url we want to scrape
-    # url = "https://redplanetscience.com/"
+    # url = "https://spaceimages-mars.com/"
     
     # # Go to the page we wish to scrape
     # browser.visit(url)
@@ -63,15 +66,16 @@ def scrape():
     # # Create a Beautiful Soup object, pass in our HTML, and use the html parser
     # soup = bs(html, "html.parser")
 
-    # # Populate the dictionary with key-value pairs for the headline, price, and reviews
+    # # Populate the dictionary with key-value pairs for the title and image url
+    # Edit These vv get statements
     # listings["news_title"] = soup.find(class_="content_title").get_text()
     # listings["news_teaser"] = soup.find(class_="article_teaser_body").get_text()
 
     # # Quit the browser
     # browser.quit()
-    #-----------------------------------#
+    #------------------------Continue------------------------##
 
-     ##  Scrape 3rd Webpage ##
+     ##  Scrape 3rd Webpage Talaxyfacts Mars Facts##
     # Setup splinter
     executable_path = {'executable_path': cdm().install()}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -88,7 +92,7 @@ def scrape():
     # Return all the HTML on our page
     html = browser.html
 
-    # Populate the dictionary with key-value pairs for the headline, price, and reviews
+    # Populate the dictionary 
     tabledata = pd.read_html(url)
     table = tabledata[1]
 
@@ -96,15 +100,15 @@ def scrape():
 
     # Quit the browser
     browser.quit()
-    #----------------------------#
+    #------------------------Continue------------------------##
 
-     ##  Scrape 4th Webpage ##
+     ##  Scrape 4th Webpage Astropedia Mars Hemispheres##
     # # Setup splinter
     # executable_path = {'executable_path': cdm().install()}
     # browser = Browser('chrome', **executable_path, headless=False)
 
     # # The url we want to scrape
-    # url = "https://redplanetscience.com/"
+    # url = "https://marshemispheres.com/"
     
     # # Go to the page we wish to scrape
     # browser.visit(url)
@@ -118,16 +122,15 @@ def scrape():
     # # Create a Beautiful Soup object, pass in our HTML, and use the html parser
     # soup = bs(html, "html.parser")
 
-    # # Populate the dictionary with key-value pairs for the headline, price, and reviews
+    # # Populate the dictionary with key-value pairs for Hemisphere names and image urls
+    # Edit These vv Get Statements (maybe loop back 4x)
     # listings["news_title"] = soup.find(class_="content_title").get_text()
     # listings["news_teaser"] = soup.find(class_="article_teaser_body").get_text()
 
     # # Quit the browser
     # browser.quit()
 
-
-
+    
+    #-----------End Multi-page CDM Scrape Commands-----------##
     # Return our populated dictionary
     return listings
-
-    # def scrape2, 3, 4

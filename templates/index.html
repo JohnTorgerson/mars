@@ -1,134 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <title>Mars</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>Mars</title>
 
-  <!-- Set the viewport the way Bootstrap likes it -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the viewport the way Bootstrap likes it -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bring in the Bootstrap stylesheet -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- Bring in the Bootstrap stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-  <!-- Optional - Bring in custom stylesheet, AFTER Bootstrap  -->
-  <!-- <link rel="stylesheet" href="../css/mars_style.css"> -->
+    <!-- Optional - Bring in custom stylesheet, AFTER Bootstrap  -->
+    <!-- <link rel="stylesheet" href="../css/mars_style.css"> -->
 
-</head>
+  </head>
 
-<body>
+  <body>
   
-  <!-- Set Container for Bootstrap interactive grid ((Maybe as articles???)) -->
-  <div class="container">
+    <!-- Set Container for Bootstrap interactive grid ((Maybe as articles???)) -->
+    <div class="container">
     
-    <div class="jumbotron text-center">
-      <h1><b>
-        Mission to Mars
-      </h1></b>
-      <p>
-        <a type="button" class="btn btn-outline-success btn-lg" href="/scrape" role="button">Scrape New Data</a>
-      </p>
-    </div>
-    <hr>
-
-
-<!-- Rendered FOR LOOP Sample -->
-          <!-- {% for movie in list %}
-
-          <div class="col-lg-4">
-            <div class="card" style="width: 20rem;">
-                <div class="card-body">
-                  <h4 class="card-title">{{ movie }}</h4>
-                  <h6 class="card-subtitle mb-2 text-muted">Is a top five favorite movie</h6>
-                  <p class="card-text">Search <a href="https://www.imdb.com/">IMDB</a> for more info!</p>
-                </div>
-              </div>
-          </div>
-
-          {% endfor %} -->
-
-    <!--Bootstrap Rows indicate the start of a new horizontal 12 span grid-->
-    <div class="row">
-      <div class="col-md-12"> <!--Selects the element's interactivity model from Bootsrap--> 
-        
-        <h2>
-          Latest Mars News
-        </h2>
-        <!-- Input code for your elements -->
-        <h4><b><u>
-          {{ listings.news_title }}
-        </h4></b></u>
+      <div class="jumbotron text-center">
+        <h1><b>
+          Mission to Mars
+        </h1></b>
         <p>
-          {{ listings.news_teaser }}
-        </p>      
+          <a type="button" class="btn btn-outline-success btn-lg" href="/scrape" role="button">Scrape New Data</a>
+        </p>
       </div>
-    </div>
-    <hr>
+      <hr>
+
+
+  <!-- Rendered FOR LOOP Sample -->
+            <!-- {% for movie in list %}
+
+            <div class="col-lg-4">
+              <div class="card" style="width: 20rem;">
+                  <div class="card-body">
+                    <h4 class="card-title">{{ movie }}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Is a top five favorite movie</h6>
+                    <p class="card-text">Search <a href="https://www.imdb.com/">IMDB</a> for more info!</p>
+                  </div>
+                </div>
+            </div>
+
+            {% endfor %} -->
+
+      <!--Bootstrap Rows indicate the start of a new horizontal 12 span grid-->
+      <div class="row">
+        <div class="col-md-12"> <!--Selects the element's interactivity model from Bootsrap--> 
+        
+          <h2>
+            Latest Mars News
+          </h2>
+          <!-- Input code for your elements -->
+          <h4><b><u>
+            {{ listings.news_title }}
+         </h4></b></u>
+          <p>
+            {{ listings.news_teaser }}
+          </p>      
+        </div>
+      </div>
+      <hr>
     
-    <!-- This indent layer starts a new Bootsrap row. -->
-    <div class="row">
+      <!-- This indent layer starts a new Bootsrap row. -->
+      <div class="row">
       
-      <!-- This indent layer starts a new Bootsrap component. -->
-      <div class="col-md-8"> 
-        <h2>
-          Mars Picture Here
-        </h2>
-        <div style="align: left; text-align:center;">
-          <img src="https://picsum.photos/" width="600" alt="Featured Mars Image">
-          <div class="caption">Sweet Caption Here</div>
+        <!-- This indent layer starts a new Bootsrap component. -->
+        <div class="col-md-8"> 
+          <h2>
+            Mars Picture Here
+          </h2>
+          <div style="align: left; text-align:center;">
+            <img src="https://picsum.photos/" width="600" alt="Featured Mars Image">
+            <div class="caption">Sweet Caption Here</div>
+          </div>
+        </div>
+
+        <!-- This indent layer starts a new Bootsrap component. -->
+        <div class="col-md-4"> 
+          <!-- Create Custom Table Class -->
+          <h2>
+            Mars Stats here
+          </h2>
+        
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr style="text-align: right; height: 80px">
+                <th>Mars</th>
+                <th>Data</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Sweet</th>
+                <td>Stats</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <!-- This indent layer starts a new Bootsrap component. -->
-      <div class="col-md-4"> 
-        <!-- Create Custom Table Class -->
-        <h2>
-          Mars Stats here
-        </h2>
-        
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr style="text-align: right; height: 80px">
-              <th>Mars</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Sweet</th>
-              <td>Stats</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- This indent layer starts a new Bootsrap row. -->
+      <div class="row">
+      
+        <!-- This indent layer starts a new Bootsrap component. -->
+        <div class="col-md-12">
+          <h2 style="text-align: center">
+            Mars Hemisphere Pictures Here
+          </h2>
+          <hr>
+
+        </div>
+        <!-- To be replaced by Hemisphire dictionary -->
+        <div class="col-md-12" style="img-align=center">
+          <img src="https://picsum.photos/" width="200" alt="Mars 1 Hemisphere">
+          <img src="https://picsum.photos/" width="200" alt="Mars 2 Hemisphere">
+          <img src="https://picsum.photos/" width="200" alt="Mars 3 Hemisphere">
+          <img src="https://picsum.photos/" width="200" alt="Mars 4 Hemisphere">
+        </div>
+      
       </div>
+
     </div>
 
-    <!-- This indent layer starts a new Bootsrap row. -->
-    <div class="row">
-      
-      <!-- This indent layer starts a new Bootsrap component. -->
-      <div class="col-md-12">
-        <h2 style="text-align: center">
-          Mars Hemisphere Pictures Here
-        </h2>
-        <hr>
+      <!-- Import the Bootstrap JavaScript code -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
-      </div>
-      <!-- To be replaced by Hemisphire dictionary -->
-      <div class="col-md-12" style="img-align=center">
-        <img src="https://picsum.photos/" width="200" alt="Mars 1 Hemisphere">
-        <img src="https://picsum.photos/" width="200" alt="Mars 2 Hemisphere">
-        <img src="https://picsum.photos/" width="200" alt="Mars 3 Hemisphere">
-        <img src="https://picsum.photos/" width="200" alt="Mars 4 Hemisphere">
-      </div>
-      
-    </div>
-
-  </div>
-
-    <!-- Import the Bootstrap JavaScript code -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
-</body>
+  </body>
 
 </html>
