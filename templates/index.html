@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Latitude Relationship Visualizations</title>
+  <title>Mars</title>
 
   <!-- Set the viewport the way Bootstrap likes it -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,10 +48,10 @@
       <div class="col-md-12"> <!--Selects the element's interactivity model from Bootsrap--> 
         <!-- Input code for your elements -->
         <h2>
-          Mars Headline Here
+          Mars Headline Here: {{news_scrape.news_title}}
         </h2>
         <p>
-          Latest mars neworem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, ea? Nobis natus veritatis corporis sit cum excepturi laudantium obcaecati quia molestiae nulla incidunt non hic, voluptas blanditiis totam laboriosam provident.
+          Latest mars neworem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, ea? Nobis natus veritatis corporis sit cum excepturi laudantium obcaecati quia molestiae nulla incidunt non hic, voluptas blanditiis totam laboriosam provident. {{news_scrape.news_teaser}}
         </p>      
       </div>
     </div>
@@ -105,6 +105,7 @@
         <hr>
 
       </div>
+      <!-- To be replaced by Hemisphire dictionary -->
       <div class="col-md-12" style="img-align=center">
         <img src="Mars-Attacks!.jpg" width="200" alt="Mars 1Hemi">
         <img src="Mars-Attacks!.jpg" width="200" alt="Mars 2Hemi">

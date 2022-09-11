@@ -1,39 +1,45 @@
+# Import Splinter to automate browser actions
+from splinter import Browser
 
-from flask import Flask, render_template, redirect
-from flask_pymongo import PyMongo
-import # scrape_phone
+# Import Beautiful Soup
+from bs4 import BeautifulSoup as bs
 
-app = Flask(__name__)
+# Import the Chromedriver
+from webdriver_manager.chrome import ChromeDriverManager as cdm
 
-# Use flask_pymongo to set up mongo connection
-app.config["MONGO_URI"] = "mongodb://localhost:27017/phone_app"
-mongo = PyMongo(app)
+# Import the others
+import pandas as pd
+import time
 
-# Or set inline
-# mongo = PyMongo(app, uri="mongodb://localhost:27017/phone_app")
+def scrape():
+    # Setup splinter
+    executable_path = {'executable_path': cdm().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
 
-@app.route("/")
-def index():
-    # find one document from our mongo db and return it.
-    listings = mongo.db.listings.find_one()
-    # pass that listing to render_template
-    return render_template("index.html", listings=listings)
+    # Create an empty dict for listings that we can save to Mongo
+    news_scrape = {}
 
-# set our path to /scrape
-@app.route("/scrape")
-def scraper():
-    # create a listings database
-    listings = mongo.db.listings
+    # The url we want to scrape
+    url = "https://redplanetscience.com/"
+    
+    # Go to the page we wish to scrape
+    browser.visit(url)
 
-    # call the scrape function in our scrape_phone file. This will scrape and save to mongo.
-    listings_data = scrape_phone.scrape()
+    # Delay briefly while the page loads
+    time.sleep(1)
 
-    # update our listings with the data that is being scraped.
-    listings.update_one({}, {"$set": listings_data}, upsert=True)
+    # Return all the HTML on our page
+    html = browser.html
+    
+    # Create a Beautiful Soup object, pass in our HTML, and use the html parser
+    soup = bs(html, "html.parser")
 
-    # return a message to our page so we know it was successful.
-    return redirect("/", code=302)
+    # Populate the dictionary with key-value pairs for the headline, price, and reviews
+    news_scrape["news_title"] = soup.find("a", class_="content_title").get_text()
+    news_scrape["news_teaser"] = soup.find("h4", class_="article_teaser_body").get_text()
 
+    # Quit the browser
+    browser.quit()
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    # Return our populated dictionary
+    return news_scrape
