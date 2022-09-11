@@ -47,32 +47,31 @@ def scrape():
     #------------------------Continue------------------------##
 
      ##  Scrape 2nd Webpage JPL Lab Space Image##
-    # # Setup splinter
-    # executable_path = {'executable_path': cdm().install()}
-    # browser = Browser('chrome', **executable_path, headless=False)
+    # Setup splinter
+    executable_path = {'executable_path': cdm().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
 
-    # # The url we want to scrape
-    # url = "https://spaceimages-mars.com/"
+    # The url we want to scrape
+    url = "https://spaceimages-mars.com/"
     
-    # # Go to the page we wish to scrape
-    # browser.visit(url)
+    # Go to the page we wish to scrape
+    browser.visit(url)
 
-    # # Delay briefly while the page loads
-    # time.sleep(1)
+    # Delay briefly while the page loads
+    time.sleep(1)
 
-    # # Return all the HTML on our page
-    # html = browser.html
+    # Return all the HTML on our page
+    html = browser.html
     
-    # # Create a Beautiful Soup object, pass in our HTML, and use the html parser
-    # soup = bs(html, "html.parser")
+    # Create a Beautiful Soup object, pass in our HTML, and use the html parser
+    soup = bs(html, "html.parser")
 
-    # # Populate the dictionary with key-value pairs for the title and image url
-    # Edit These vv get statements
-    # listings["news_title"] = soup.find(class_="content_title").get_text()
-    # listings["news_teaser"] = soup.find(class_="article_teaser_body").get_text()
+    # Populate the dictionary with key-value pairs for the title and image url
+    feature = soup.find('img', class_="headerimage fade-in")['src']
+    listings["feature"] = feature
 
-    # # Quit the browser
-    # browser.quit()
+    # Quit the browser
+    browser.quit()
     #------------------------Continue------------------------##
 
      ##  Scrape 3rd Webpage Talaxyfacts Mars Facts##
@@ -93,10 +92,14 @@ def scrape():
     html = browser.html
 
     # Populate the dictionary 
-    tabledata = pd.read_html(url)
+    tabledata = pd.read_html(url){0}
     table = tabledata[1]
-
-    print(table)
+    new_h = table.iloc[0]
+    table = table[1:]
+    table.columns = new_h
+    table.set_index('Mars - Earth Comparison')
+    table.to_html(index=False)
+    listings["table"] = table.to_html(index=False)
 
     # Quit the browser
     browser.quit()
