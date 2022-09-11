@@ -11,7 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager as cdm
 import pandas as pd
 import time
 
-def scrape():
+def scrape1():
     # Setup splinter
     executable_path = {'executable_path': cdm().install()}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -43,3 +43,5 @@ def scrape():
 
     # Return our populated dictionary
     return news_scrape
+
+    def scrape2, 3, 4
