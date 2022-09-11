@@ -11,13 +11,13 @@ from webdriver_manager.chrome import ChromeDriverManager as cdm
 import pandas as pd
 import time
 
-def scrape1():
+def scrape():
     # Setup splinter
     executable_path = {'executable_path': cdm().install()}
     browser = Browser('chrome', **executable_path, headless=False)
 
     # Create an empty dict for listings that we can save to Mongo
-    news_scrape = {}
+    listings = {}
 
     # The url we want to scrape
     url = "https://redplanetscience.com/"
@@ -35,13 +35,13 @@ def scrape1():
     soup = bs(html, "html.parser")
 
     # Populate the dictionary with key-value pairs for the headline, price, and reviews
-    news_scrape["news_title"] = soup.find("a", class_="content_title").get_text()
-    news_scrape["news_teaser"] = soup.find("h4", class_="article_teaser_body").get_text()
+    listings["news_title"] = soup.find(class_="content_title").get_text()
+    listings["news_teaser"] = soup.find(class_="article_teaser_body").get_text()
 
     # Quit the browser
     browser.quit()
 
     # Return our populated dictionary
-    return news_scrape
+    return listings
 
-    def scrape2, 3, 4
+    # def scrape2, 3, 4
