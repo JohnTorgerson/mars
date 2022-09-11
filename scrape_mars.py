@@ -12,12 +12,13 @@ import pandas as pd
 import time
 
 def scrape():
+    # Create an empty dict for listings that we can save to Mongo
+    listings = {}
+
+    ##  Scrape 1st Webpage ##
     # Setup splinter
     executable_path = {'executable_path': cdm().install()}
     browser = Browser('chrome', **executable_path, headless=False)
-
-    # Create an empty dict for listings that we can save to Mongo
-    listings = {}
 
     # The url we want to scrape
     url = "https://redplanetscience.com/"
@@ -40,6 +41,91 @@ def scrape():
 
     # Quit the browser
     browser.quit()
+    #-------------------------#
+
+     ##  Scrape 2nd Webpage ##
+    # # Setup splinter
+    # executable_path = {'executable_path': cdm().install()}
+    # browser = Browser('chrome', **executable_path, headless=False)
+
+    # # The url we want to scrape
+    # url = "https://redplanetscience.com/"
+    
+    # # Go to the page we wish to scrape
+    # browser.visit(url)
+
+    # # Delay briefly while the page loads
+    # time.sleep(1)
+
+    # # Return all the HTML on our page
+    # html = browser.html
+    
+    # # Create a Beautiful Soup object, pass in our HTML, and use the html parser
+    # soup = bs(html, "html.parser")
+
+    # # Populate the dictionary with key-value pairs for the headline, price, and reviews
+    # listings["news_title"] = soup.find(class_="content_title").get_text()
+    # listings["news_teaser"] = soup.find(class_="article_teaser_body").get_text()
+
+    # # Quit the browser
+    # browser.quit()
+    #-----------------------------------#
+
+     ##  Scrape 3rd Webpage ##
+    # Setup splinter
+    executable_path = {'executable_path': cdm().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
+
+    # The url we want to scrape
+    url = "https://galaxyfacts-mars.com/"
+    
+    # Go to the page we wish to scrape
+    browser.visit(url)
+
+    # Delay briefly while the page loads
+    time.sleep(1)
+
+    # Return all the HTML on our page
+    html = browser.html
+
+    # Populate the dictionary with key-value pairs for the headline, price, and reviews
+    tabledata = pd.read_html(url)
+    table = tabledata[1]
+
+    print(table)
+
+    # Quit the browser
+    browser.quit()
+    #----------------------------#
+
+     ##  Scrape 4th Webpage ##
+    # # Setup splinter
+    # executable_path = {'executable_path': cdm().install()}
+    # browser = Browser('chrome', **executable_path, headless=False)
+
+    # # The url we want to scrape
+    # url = "https://redplanetscience.com/"
+    
+    # # Go to the page we wish to scrape
+    # browser.visit(url)
+
+    # # Delay briefly while the page loads
+    # time.sleep(1)
+
+    # # Return all the HTML on our page
+    # html = browser.html
+    
+    # # Create a Beautiful Soup object, pass in our HTML, and use the html parser
+    # soup = bs(html, "html.parser")
+
+    # # Populate the dictionary with key-value pairs for the headline, price, and reviews
+    # listings["news_title"] = soup.find(class_="content_title").get_text()
+    # listings["news_teaser"] = soup.find(class_="article_teaser_body").get_text()
+
+    # # Quit the browser
+    # browser.quit()
+
+
 
     # Return our populated dictionary
     return listings
