@@ -12,16 +12,16 @@ import pandas as pd
 import time
 
 def scrape():
+    # Setup splinter / remote chrome browser driver
+    executable_path = {'executable_path': cdm().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
+    
     # Create an empty dict for listings that we can save to Mongo
-    listings = {}
+    mars_db = {}
     #----Below this Repeat remote chrome driver as needed----##
     #---------------to scrape each updated page--------------##
 
-
-    ##  Scrape 1st Webpage JPL MARS Planet Science News##
-    # Setup splinter
-    executable_path = {'executable_path': cdm().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+    ##  Scrape 1st Webpage JPL MARS Planet Science News ##
 
     # The url we want to scrape
     url = "https://redplanetscience.com/"
@@ -39,17 +39,14 @@ def scrape():
     soup = bs(html, "html.parser")
 
     # Populate the dictionary with key-value pairs for title and teaser paragraph
-    listings["news_title"] = soup.find(class_="content_title").get_text()
-    listings["news_teaser"] = soup.find(class_="article_teaser_body").get_text()
+    mars_db["news_title"] = soup.find(class_="content_title").get_text()
+    mars_db["news_teaser"] = soup.find(class_="article_teaser_body").get_text()
 
     # Quit the browser
     browser.quit()
     #------------------------Continue------------------------##
 
-     ##  Scrape 2nd Webpage JPL Lab Space Image##
-    # Setup splinter
-    executable_path = {'executable_path': cdm().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+    ##  Scrape 2nd Webpage JPL Lab Space Image ##
 
     # The url we want to scrape
     url = "https://spaceimages-mars.com/"
@@ -68,16 +65,13 @@ def scrape():
 
     # Populate the dictionary with key-value pairs for the title and image url
     feature = soup.find('img', class_="headerimage fade-in")['src']
-    listings["feature"] = feature
+    mars_db["feature"] = feature
 
     # Quit the browser
     browser.quit()
     #------------------------Continue------------------------##
 
-     ##  Scrape 3rd Webpage Talaxyfacts Mars Facts##
-    # Setup splinter
-    executable_path = {'executable_path': cdm().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+    ##  Scrape 3rd Webpage Talaxyfacts Mars Facts ##
 
     # The url we want to scrape
     url = "https://galaxyfacts-mars.com/"
@@ -101,16 +95,13 @@ def scrape():
     table.to_html(index=False)
     
     # Populate the dictionary 
-    listings["table"] = table.to_html(index=False)
+    mars_db["table"] = table.to_html(index=False)
 
     # Quit the browser
     browser.quit()
     #------------------------Continue------------------------##
 
-     ##  Scrape 4th Webpage Astropedia Cerberus Hemispheres##
-    # Setup splinter
-    executable_path = {'executable_path': cdm().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+    ##  Scrape 4th Webpage Astropedia Cerberus Hemispheres ##
 
     # The url we want to scrape
     url = "https://marshemispheres.com/"
@@ -134,19 +125,16 @@ def scrape():
     soup = bs(html, "html.parser")
 
     # Populate the dictionary with key-value pairs for Hemisphere names and image urls
-    listings["cerb_title"] = 'Cerberus Hemisphere'
+    mars_db["cerb_title"] = 'Cerberus Hemisphere'
     cerb_tif = browser.links.find_by_partial_text('cerberus_enhanced').text
-    listings["cerb_tif"] = url + cerb_tif
+    mars_db["cerb_tif"] = url + cerb_tif
 
     # Quit the browser
     browser.quit()
 
 #------------------------Continue------------------------##
 
-     ##  Scrape 4th Webpage Astropedia Schiaparelli Hemispheres##
-    # Setup splinter
-    executable_path = {'executable_path': cdm().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+    ##  Scrape 4th Webpage Astropedia Schiaparelli Hemispheres ##
 
     # The url we want to scrape
     url = "https://marshemispheres.com/"
@@ -170,19 +158,16 @@ def scrape():
     soup = bs(html, "html.parser")
 
     # Populate the dictionary with key-value pairs for Hemisphere names and image urls
-    listings["schi_title"] = 'Schiaparelli Hemisphere'
+    mars_db["schi_title"] = 'Schiaparelli Hemisphere'
     schi_tif = browser.links.find_by_partial_text('schiaparelli_enhanced').text
-    listings["schi_tif"] = url + schi_tif
+    mars_db["schi_tif"] = url + schi_tif
 
     # Quit the browser
     browser.quit()
 
     #------------------------Continue------------------------##
 
-     ##  Scrape 4th Webpage Astropedia Syrtis Major Hemispheres##
-    # Setup splinter
-    executable_path = {'executable_path': cdm().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+    ##  Scrape 4th Webpage Astropedia Syrtis Major Hemispheres ##
 
     # The url we want to scrape
     url = "https://marshemispheres.com/"
@@ -206,20 +191,17 @@ def scrape():
     soup = bs(html, "html.parser")
 
     # Populate the dictionary with key-value pairs for Hemisphere names and image urls
-    listings["syrt_title"] = 'Syrtis Major Hemisphere'
+    mars_db["syrt_title"] = 'Syrtis Major Hemisphere'
     syrt_tif = browser.links.find_by_partial_text('syrtis_major_enhanced').text
-    listings["syrt_tif"] = url + syrt_tif
+    mars_db["syrt_tif"] = url + syrt_tif
 
     # Quit the browser
     browser.quit()
 
     #------------------------Continue------------------------##
 
-     ##  Scrape 4th Webpage Astropedia Valles Marineris Hemispheres##
-    # Setup splinter
-    executable_path = {'executable_path': cdm().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
-
+    ##  Scrape 4th Webpage Astropedia Valles Marineris Hemispheres ##
+    
     # The url we want to scrape
     url = "https://marshemispheres.com/"
     
@@ -242,13 +224,13 @@ def scrape():
     soup = bs(html, "html.parser")
 
     # Populate the dictionary with key-value pairs for Hemisphere names and image urls
-    listings["vall_title"] = 'Valles Marineris Hemisphere'
+    mars_db["vall_title"] = 'Valles Marineris Hemisphere'
     vall_tif = browser.links.find_by_partial_text('valles_marineris_enhanced').text
-    listings["vall_tif"] = url + vall_tif
+    mars_db["vall_tif"] = url + vall_tif
 
     # Quit the browser
     browser.quit()
     
     #-----------End Multi-page CDM Scrape Commands-----------##
     # Return our populated dictionary
-    return listings
+    return mars_db
