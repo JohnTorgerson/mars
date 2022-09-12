@@ -7,14 +7,13 @@ import scrape_mars
 app = Flask(__name__)
 
 # Use flask_pymongo to set up mongo connection
-app.config["MONGO_URI"] = "mongodb://localhost:27017/phone_app"
-mongo = PyMongo(app)
+mongo = PyMongo(app, uri="mongodb://localhost:27017")
 
 ## set primary landing page application
 @app.route("/")
 def index():
     # find one document from our mongo db and return it.
-    mars_db = mongo.db.mars_db.find_all()
+    mars_db = mongo.mars_db.find_all()
     # pass that listing to render_template
     return render_template("index.html", mars_db=mars_db)
     # print confirmation
@@ -24,7 +23,7 @@ def index():
 @app.route("/scrape")
 def scraper():
     # create a listings database
-    mars_db = mongo.db.mars_db
+    mars_db = mongo.mars_db
 
     # call the scrape function in our scrape_mars file. This will scrape and save to mongo.
     mars_items = scrape_mars.scrape()
