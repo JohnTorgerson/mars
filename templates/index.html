@@ -54,7 +54,7 @@
           Featured Mars Image
         </h2>
         {% with feature = collection.feature %}
-        <img src="{{feature}}" alt="Featured Mars Image" class="image-responsive">
+        <img src="{{feature}}" alt="Featured Mars Image" width=800 class="image-responsive">
         {% endwith %} 
       </div>
 
@@ -87,7 +87,7 @@
       <!-- To be replaced by Hemisphire dictionary -->
       <div class="col-md-3" style="img-align=center">
         {% with cerb = collection.cerb_jpg %}
-        <img src="{{cerb}}" alt="{{ collection.cerb_title }}" width=240 class="image-responsive">
+        <img src="{{cerb}}" alt="{{ collection.cerb_title }}" width=300 class="image-responsive">
         {% endwith %}
 
         <h3>
@@ -97,7 +97,7 @@
       <!-- -------------------------------------- -->
       <div class="col-md-3" style="img-align=center">
         {% with schi = collection.schi_jpg %}
-        <img src="{{schi}}" alt="{{ collection.schi_title }}" width=240 class="image-responsive">
+        <img src="{{schi}}" alt="{{ collection.schi_title }}" width=300 class="image-responsive">
         {% endwith %}
         
         <h3>
@@ -107,7 +107,7 @@
       <!-- -------------------------------------- -->
       <div class="col-md-3" style="img-align=center">
         {% with syrt = collection.syrt_jpg %}
-        <img src="{{syrt}}" alt="{{ collection.syrt_title }}" width=240 class="image-responsive">
+        <img src="{{syrt}}" alt="{{ collection.syrt_title }}" width=300 class="image-responsive">
         {% endwith %}
         
         <h3>
@@ -117,7 +117,7 @@
       <!-- -------------------------------------- -->
       <div class="col-md-3" style="img-align=center">
         {% with vall = collection.vall_jpg %}
-        <img src="{{vall}}" alt="{{ collection.vall_title }}" width=240 class="image-responsive">
+        <img src="{{vall}}" alt="{{ collection.vall_title }}" width=300 class="image-responsive">
         {% endwith %}
   
         <h3>

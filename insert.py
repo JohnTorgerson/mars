@@ -28,7 +28,9 @@ def scrape():
     mongo.db.collection.update_one({}, {"$set": collection_items}, upsert=True)
 
     # print confirmation
+    print("-------------")
     print("Newly Scraped Data Uploaded!") 
+    print("-------------")
 
     # return a message to our page so we know it was successful.
     return redirect("/", code=302)
